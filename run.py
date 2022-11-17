@@ -23,7 +23,20 @@ def confirm_grid_place_ship(start_row, end_row, start_col, end_col):
 """Check the row or column to see if is safe to place the ship"""
     global grid
     global ship_position
-    
+
+    all_confirmed = True
+    for r in range(start_row, end_row):
+        for c in range(start_col, end_col):
+            if grid[r][c] != ".":
+                all_confirmed = False
+                break
+    if all_confirmed:
+        ship_position.append([start_row, end_row, start_col, end_col])
+        for r in range(start_row, end_row):
+            for c in ramge(start_col, end_col):
+                grid[r][c] = "O"
+    return all_confirmed
+                
 
 def place_ship_on_grid(row, col, direction, length):
 """Try to place a ship on grid based on direction"""
