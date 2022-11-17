@@ -17,3 +17,20 @@ ship_position = [[]]
 game_over = False
 #Global variable for alphabet
 alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+
+def confirm_grid_place_ship(start_row, end_row, start_col, end_col):
+"""Check the row or column to see if is safe to place the ship"""
+    global grid
+    global ship_position
+    
+
+def place_ship_on_grid(row, col, direction, length):
+"""Try to place a ship on grid based on direction"""
+
+def create_grid():
+"""Create grid and randomly place ships in different directions"""   
+
+
+def show_grid():
+"""Will show the grid with rows A-J and columns 0-9"""
