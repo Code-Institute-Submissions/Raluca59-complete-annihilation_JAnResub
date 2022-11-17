@@ -110,7 +110,46 @@ def show_grid():
     print(" ", end=" ")
     for i in range(len(grid[0])):
         print(str(i), end=" ")
-    print("") 
+    print("")
+
+
+def valid_bullet_coordinate():
+    """Checks if coordinates of the bullet is valid"""
+
+    global grid
+    global alphabet
+
+    is_valid_coordinate = False
+    row = -1
+    col = -1
+
+    while is_valid_coordinate is False:
+        coordinate = input("Enter row (A-J) and column (0-9): ")
+        coordinate = coordinate.upper()
+        if len(coordinate) <= 0 or len(coordinate) > 2:
+            print("Please enter only one row and one column.")
+            continue
+        row = coordinate[0]
+        col = coordinate[1]
+        if not row.isalpha() or not col.isnumeric():
+            print("Please enter a letter between A-J and a number between 0-9.")
+            continue
+        row = alphabet.find(row)
+        if not (-1 < row < grid_size):
+            print("Please enter a letter between A-J and a number between 0-9.")
+            continue
+        col = int(col)
+        if not (-1 < col < grid_size):
+            print("Please enter a letter between A-J and a number between 0-9.")
+            continue
+        if grid[row][col] == "#" or grid[row][col] == "X":
+            print("You have already shot a bullet at this location. Try another!")
+            continue
+        if grid[row][col] == "." or grid[row][col] == "O":
+            is_valid_coordinate = True
+
+    return row, col
+
 
 def play():
     """Main entry for game loop"""
