@@ -36,10 +36,33 @@ def confirm_grid_place_ship(start_row, end_row, start_col, end_col):
             for c in ramge(start_col, end_col):
                 grid[r][c] = "O"
     return all_confirmed
-                
+
 
 def place_ship_on_grid(row, col, direction, length):
 """Try to place a ship on grid based on direction"""
+global grid_size
+
+start_row, end_row, start_col, end_col = row, row + 1, col, col + 1
+if direction == "left":
+    if col - length < 0:
+        return False
+    start_col = col - length + 1    
+elif direction == "right":
+    if col + length >= grid_size:
+        return False
+    end_col = col + length
+elif direction == "up":
+    if row - length < 0:
+        return False
+    start_row = row - length + 1
+elif direction == "down":
+    if row + length >= grid_size:
+        return False
+    end_row = row + length
+return confirm_grid_place_ship(start_row, end_row, start_col, end_col)
+
+
+
 
 def create_grid():
 """Create grid and randomly place ships in different directions"""   
