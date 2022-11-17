@@ -171,6 +171,33 @@ def check_sunken_ships(row, col):
     return True
 
 
+def shoot():
+    """Updates the grid whenever a bullet is shot"""
+
+    global grid
+    global ships_sunk
+    global bullets_left
+
+    row, col = valid_bullet_coordinate()
+    print("")
+    print("--------------------")
+
+    if grid[row][col] == ".":
+        print("You missed! No ship at this position.")
+        grid[row][col] = "#"
+    elif grid[row][col] == "O":
+        print("You hit a ship!")
+        grid[row][col] = "X"
+        if check_sunken_ships(row, col):
+            print("A ship was destroyed!")
+            ships_sunk +=1
+        else:
+            print("A ship was damaged!")
+
+    bullets_left -= 1
+
+
+
 def play():
     """Main entry for game loop"""
     global game_over
