@@ -190,11 +190,27 @@ def shoot():
         grid[row][col] = "X"
         if check_sunken_ships(row, col):
             print("A ship was destroyed!")
-            ships_sunk +=1
+            ships_sunk += 1
         else:
             print("A ship was damaged!")
 
     bullets_left -= 1
+
+
+def check_if_game_over():
+    """Checks if all enemy ships have been sunk or if the player has run out of bullets"""
+
+    global numb_ships
+    global ships_sunk
+    global bullets_left
+    global game_over
+
+    if numb_ships == ships_sunk:
+        print("You won!")
+        game_over = True
+    elif bullets_left <= 0:
+        print("Game over! No bullets left.")
+        game_over = True
 
 
 
