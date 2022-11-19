@@ -124,7 +124,7 @@ def valid_bullet_coordinate():
     col = -1
 
     while is_valid_coordinate is False:
-        coordinate = input("Enter row (A-J) and column (0-9): ")
+        coordinate = input("Enter row (A-J) and column (0-9):\n")
         coordinate = coordinate.upper()
         if len(coordinate) <= 0 or len(coordinate) > 2:
             print("Please enter only one row and one column.")
