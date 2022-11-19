@@ -6,11 +6,11 @@ grid = [[]]
 # Global variable for grid size
 grid_size = 10
 # Global variable for ships
-numb_ships = 3
+numb_ships = 4
 # Global variable for ships sunk 
 ships_sunk = 0
 # Global variable for bullets 
-bullets_left = 60
+bullets_left = 40
 # Global variable for ship position
 ship_position = [[]]
 # Global variable for game status
@@ -132,18 +132,18 @@ def valid_bullet_coordinate():
         row = coordinate[0]
         col = coordinate[1]
         if not row.isalpha() or not col.isnumeric():
-            print("Please enter a letter between A-J and a number between 0-9.")
+            print("Enter a letter between A-J and a number between 0-9.")
             continue
         row = alphabet.find(row)
         if not (-1 < row < grid_size):
-            print("Please enter a letter between A-J and a number between 0-9.")
+            print("Enter a letter between A-J and a number between 0-9.")
             continue
         col = int(col)
         if not (-1 < col < grid_size):
-            print("Please enter a letter between A-J and a number between 0-9.")
+            print("Enter a letter between A-J and a number between 0-9.")
             continue
         if grid[row][col] == "#" or grid[row][col] == "X":
-            print("You have already shot a bullet at this location. Try another!")
+            print("You have already attacked at this location. Try another!")
             continue
         if grid[row][col] == "." or grid[row][col] == "O":
             is_valid_coordinate = True
@@ -180,7 +180,7 @@ def shoot():
 
     row, col = valid_bullet_coordinate()
     print("")
-    print("--------------------")
+    print("-------------------------")
 
     if grid[row][col] == ".":
         print("You missed! No ship at this position.")
@@ -189,10 +189,10 @@ def shoot():
         print("You hit a ship!")
         grid[row][col] = "X"
         if check_sunken_ships(row, col):
-            print("A ship was destroyed!")
+            print("Enemy ship destroyed!")
             ships_sunk += 1
         else:
-            print("A ship was damaged!")
+            print("Enemy ship damaged!")
 
     bullets_left -= 1
 
@@ -213,16 +213,23 @@ def check_if_game_over():
         game_over = True
 
 
-
 def play():
     """Main entry for game loop"""
     global game_over
 
-    create_grid()
-    show_grid()
-    confirm_grid_place_ship()
-    place_ship_on_grid()
+    print("-------Complete Annihilation-------")
+    print("You have 40 bullets to annihilate the enemy ships!")
 
-    print("-------Complete Annihilation")
+    create_grid()
+
+    while game_over is False:
+        show_grid()
+        print("Enemy ships remaining: " + str(numb_ships - ships_sunk))
+        print("Bullets left in your arsenal: " + str(bullets_left))
+        shoot()
+        print("-------------------------")
+        print("")
+        check_if_game_over()
+
 
 play()
