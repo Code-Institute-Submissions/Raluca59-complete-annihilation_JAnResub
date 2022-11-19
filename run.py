@@ -94,7 +94,7 @@ def show_grid():
     global grid
     global alphabet
 
-    debug_mode = True
+    debug_mode = False
     alphabet = alphabet[0: len(grid) + 1]
     for row in range(len(grid)):
         print(alphabet[row], end= " ")
