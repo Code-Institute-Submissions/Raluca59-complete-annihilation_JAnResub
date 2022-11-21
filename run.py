@@ -7,9 +7,9 @@ grid = [[]]
 grid_size = 10
 # Global variable for ships
 numb_ships = 4
-# Global variable for ships sunk 
+# Global variable for ships sunk
 ships_sunk = 0
-# Global variable for bullets 
+# Global variable for bullets
 bullets_left = 40
 # Global variable for ship position
 ship_position = [[]]
@@ -46,7 +46,7 @@ def place_ship_on_grid(row, col, direction, length):
     if direction == "left":
         if col - length < 0:
             return False
-        start_col = col - length + 1    
+        start_col = col - length + 1
     elif direction == "right":
         if col + length >= grid_size:
             return False
@@ -89,6 +89,7 @@ def create_grid():
         if place_ship_on_grid(random_row, random_col, direction, ship_size):
             numb_placed_ships += 1
 
+
 def show_grid():
     """Will show the grid with rows A-J and columns 0-9"""
     global grid
@@ -97,16 +98,16 @@ def show_grid():
     debug_mode = False
     alphabet = alphabet[0: len(grid) + 1]
     for row in range(len(grid)):
-        print(alphabet[row], end= " ")
+        print(alphabet[row], end=" ")
         for col in range(len(grid[row])):
             if grid[row][col] == "O":
                 if debug_mode:
                     print("O", end=" ")
                 else:
-                    print(".", end=" ")    
+                    print(".", end=" ")
             else:
-                print(grid[row][col], end=" ")        
-        print("")        
+                print(grid[row][col], end=" ")
+        print("")
     print(" ", end=" ")
     for i in range(len(grid[0])):
         print(str(i), end=" ")
@@ -152,7 +153,10 @@ def valid_bullet_coordinate():
 
 
 def check_sunken_ships(row, col):
-    """Checks if all parts of a ship have been hit and iterates the number of ships sunk"""
+    """
+    Checks if all parts of a ship have been hit.
+    Iterates the number of ships sunk.
+    """
 
     global grid
     global ship_position
@@ -198,7 +202,10 @@ def shoot():
 
 
 def check_if_game_over():
-    """Checks if all enemy ships have been sunk or if the player has run out of bullets"""
+    """
+    Checks if all enemy ships have been sunk.
+    Also checks if the player has run out of bullets.
+    """
 
     global numb_ships
     global ships_sunk
