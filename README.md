@@ -41,6 +41,8 @@ The game ends when either all ships are sunk or the player runs out of bullets.
 
 ![Image of messages telling the player the correct format for the coordinates](images/gamemessages.png)
 
+![Image of a game where the player lost](images/game-over.png)
+
 ### Future Features
 
 * Ability to play against other players
