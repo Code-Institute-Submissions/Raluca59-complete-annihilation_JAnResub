@@ -57,13 +57,17 @@ The data model for this project is simply a collection of functions that work to
 
 The project has been manually tested by doing the following:
 
-* Running the code through Code Institute's Python linter
+* Running the code through Code Institute's Python linter and confirming that there are no problems
 
 * Running the game both in my local terminal and in the Code Institute Heroku terminal
   - Played multiple game sessions
   - Gave both valid and invalid inputs to test game's response
 
 ### Bugs
+
+### Solved Bugs
+
+* When entering an input containing only one character, the application crashed. I fixed this by adding an additional condition to one of the if-statements in the     "valid_bullet_coordinate" function. I added the condition "or len(coordinate) == 1" to line 130 in run.py. 
 
 ### Remaining Bugs
 
